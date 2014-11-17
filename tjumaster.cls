@@ -8,12 +8,78 @@
 % ------------------- General Settings ------------------
 \setcounter{secnumdepth}{4} % 让paragraph当四级标题
 
+%--------------------------- 页眉 页脚 页码 ---------------------------
+\RequirePackage{fancyhdr}
+
+
+%宋体五号,单页:右上角;双页:左上角,Abstract 部分用 Times New Roman 体,五号
+
+% \lhead{}
+% \chead{}
+% \makeatletter
+% \rhead{\thesis@ctitle}
+% \makeatother
+% \lfoot{}
+% \rfoot{}
+%\cfoot{\song \wuhao 第\enspace\thepage\enspace 页 }
+% \renewcommand{\headrulewidth}{1pt}
+% \renewcommand{\footrulewidth}{1pt}
+
+
+% \fancyhead{}
+% \fancyhead[RO,LE]{Thesis Title}
+% \fancyfoot{}
+% \fancyfoot[LE,RO]{\thepage}
+% \fancyfoot[LO,CE]{Chapter \thechapter}
+% \fancyfoot[CO,RE]{Author Name}
+
+
 % 为区分目录和正文
-\newcommand{\frontmatter}{\pagenumbering{roman} \pagestyle{plain}}
+\newcommand{\frontmatter}{
+	\pagenumbering{Roman} 
+	\pagestyle{fancy}
+	%called after fancy 让leftmark不显示数字T_T， 确保放在\pagestyle后
+	\renewcommand{\sectionmark}[1]{\song \wuhao  \markboth{##1}{} }	
+	\makeatletter 
+		\fancyhead{}
+		%单数页页眉在右上角，双数页在左上角 leftmark含有章节名称
+		\fancyhead[RO,LE]{\song \wuhao 同济大学 \hspace*{0.5em} 硕士学位论文  \leftmark}
+	\makeatother
+	}
+
+
 \newcommand{\mainmatter}{
 	\pagenumbering{arabic} 
+	\setcounter{page}{1} 
 	\pagestyle{fancy}
-	\setcounter{page}{1}} 
+	%called after fancy 让leftmark不显示数字T_T
+	\renewcommand{\sectionmark}[1]{ \markboth{##1}{} }	
+	\makeatletter 
+		%单数页页眉在右上角，双数页在左上角
+		%正文的单数页页眉为章标题:“第 X 章 XXXXXX”,双数页 页眉为论文标题;“同济大学 硕/博士学位论文 中文题目”
+		\fancyhead{}
+		\fancyhead[RO]{\song \wuhao 第 \thesection 章   \leftmark }
+		\fancyhead[LE]{\song \wuhao 同济大学 \hspace*{0.5em} 硕士学位论文 \hspace*{0.5em} \thesis@ctitle }
+	\makeatother} 
+
+%估计还需要个backmatter
+
+\newcommand{\backmatter}{
+	%页眉页脚
+	\pagestyle{fancy}
+	\renewcommand{\sectionmark}[1]{ \markboth{##1}{} }	
+	\makeatletter 
+
+		\fancyhead{}
+		\fancyhead[LE, RO]{\song \wuhao 同济大学 \hspace*{0.5em} 硕士学位论文 \hspace*{0.5em} \leftmark  }
+	\makeatother
+
+	%改变section题目样式
+	\titleformat{\section}{\centering \bf  \hei \sanhao}{}{1em}{}
+	%\renewcommand*{\section}[1]{\section{#1}}
+
+	
+} 
 
 % --------------------- Layout -------------------
 % 上、下 2.54cm,左、右 3.17cm,页眉、页脚 2.0cm,装订线 0 cm
@@ -79,7 +145,7 @@
 % 黑体,三号,加粗居中,单倍行距,段前 24 磅,段 后 18 磅
 
 \titlecontents{section}[0em]{\addvspace{4pt}}%
-	          {\xiaosihao\song \thecontentslabel \enspace}
+	          {\xiaosihao\song 第 \thecontentslabel 章 \enspace}
 	              {\xiaosihao\song}{\dotfill\contentspage}[\addvspace{0pt}]
 % 各章目录 宋体,小四号,行距 18 磅,段前段后 0 磅,两端对 齐,页码右对齐
 
@@ -92,6 +158,10 @@
 	          {\xiaosihao\song\thecontentslabel\enspace}%
 	              {\xiaosihao\song}{\dotfill\contentspage}[\addvspace{0pt}]
 % 宋体,小四号,行距 18 磅,段前段后 0 磅,两端对 齐,页码右对齐,左缩进 4 字符
+
+% macro for hiding the section in toc
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
 
 
 %---------------------------- 各章节标题 ---------------------------
@@ -111,15 +181,19 @@
 \titleformat{\paragraph}{ \hei \xiaosihao}{\theparagraph}{1em}{}
 % 三级标题 黑体,小四顶左,单倍行距,段前空 12 磅,段后空 6 磅,序号 与题名间空一个字符
 
-\newcommand\sectionbreak{\clearpage} % 在每个section结束之后开始新的页
+%\renewcommand\sectionbreak{\clearpage} % 在每个section结束之后开始新的页
 
 % \RequirePackage{etoolbox}
 
-% \AfterEndEnvironment{section}{\clearpage}
+%\AfterEndEnvironment{section}{\clearpage}
 
 
 % ------------------------------------ 参考文献 ----------------------------
-\renewcommand\refname{参考文献}
+\RequirePackage{etoolbox}
+\patchcmd{\thebibliography}{\addcontentsline{toc}{section}{\refname}}{}{}{}
+%\patchcmd{\thebibliography}{\section{参考文献}}{}{}{}
+\renewcommand {\refname}{参考文献}
+
 
 % ------------------------------------ 图 & 表 --------------------------------
 %\newcommand{/tabincell}[2]{/begin{tabular}{@{}#1@{}}#2/end{tabular}}
@@ -144,32 +218,6 @@
 \pretitle{\begin{center}\erhao \hei \textbf}
 \posttitle{\par\end{center}\vskip 0.5em}
 
-%--------------------------- 页眉 页脚 页码 ---------------------------
-\RequirePackage{fancyhdr}
-\fancyhead{}
-\makeatletter 
-	\fancyhead[RO,LE]{\song \wuhao \thesis@ctitle }
-\makeatother
-%宋体五号,单页:右上角;双页:左上角,Abstract 部分用 Times New Roman 体,五号
-
-% \lhead{}
-% \chead{}
-% \makeatletter
-% \rhead{\thesis@ctitle}
-% \makeatother
-% \lfoot{}
-% \rfoot{}
-%\cfoot{\song \wuhao 第\enspace\thepage\enspace 页 }
-% \renewcommand{\headrulewidth}{1pt}
-% \renewcommand{\footrulewidth}{1pt}
-
-
-% \fancyhead{}
-% \fancyhead[RO,LE]{Thesis Title}
-% \fancyfoot{}
-% \fancyfoot[LE,RO]{\thepage}
-% \fancyfoot[LO,CE]{Chapter \thechapter}
-% \fancyfoot[CO,RE]{Author Name}
 
 
 % ------------------------------ Thesis Info -------------------------------
@@ -383,13 +431,19 @@
 %摘要:黑体,三号,加粗居中,单倍行距, 段前 24 磅,段后 18 磅
 
 \newenvironment{cabstract}
-	{\begin{titlepage} \begin{center}
+	{ 
+	\makeatletter 
+	%单数页页眉在右上角，双数页在左上角
+	\fancyhead{}
+		\fancyhead[LE,RO]{\song \wuhao 同济大学 \hspace*{0.5em} 硕士学位论文 \hspace*{1em} 摘要 }
+	\makeatother
+	\begin{center}
 			\fontsize{15.75pt}{34pt} \selectfont \hei
 			\bfseries 摘\hspace{2em}要
 	\end{center} 
 	\begin{spacing}{1.5} \song \xiaosihao \selectfont  }
 	% 宋体,小四号,行距 20 磅,段前段后 0 磅
-	{ \end{spacing} \end{titlepage} \clearpage}
+	{ \end{spacing} \clearpage}
 
 \newcommand{\makeckeyword}[1]{\vspace*{0.6cm} \noindent \textbf{关键词：}#1}
 
@@ -398,14 +452,26 @@
 %摘要:黑体,三号,加粗居中,单倍行距, 段前 24 磅,段后 18 磅
 
 \newenvironment{eabstract}
-	{\begin{titlepage} \begin{center}
+	{ 
+		\makeatletter 
+		%单数页页眉在右上角，双数页在左上角
+		\fancyhead{}
+		\fancyhead[LE,RO]{\song \wuhao 同济大学 \hspace*{0.5em} 硕士学位论文 \hspace*{1em} 摘要 }
+	\makeatother
+	\begin{center}
 			\fontsize{15.75pt}{34pt} \selectfont \arial
 			\bfseries Abstract
 	\end{center} 
 	 \begin{spacing}{1.5} \timesnew \xiaosihao \selectfont  }
-	{ \end{spacing} \end{titlepage} \clearpage}
+	{ \end{spacing} \clearpage
+		% for table of contents .... bad solution
+		\fancyhead{}
+		\fancyhead[LE,RO]{\song \wuhao 同济大学 \hspace*{0.5em} 硕士学位论文 \hspace*{1em} 目录 }
+	}
 
 	\newcommand{\makeekeyword}[1]{\vspace*{0.6cm} \noindent \textbf{Kew Words: }#1}
+
+	
 
 
 

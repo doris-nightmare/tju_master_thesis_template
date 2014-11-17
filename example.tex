@@ -1,0 +1,140 @@
+\documentclass{tjumaster}
+
+% fill in the variables
+\ctitle{用 L a T e X 写论文的初步尝试}
+\etitle{Master Thesis AAAAAAAAAAA BBBBBBBBB CCCCCCCC}
+
+% 副标题功能尚未支持= =
+\csubtitle{中文副标题}
+\esubtitle{English Subtitle}
+
+\cauthor{张三}
+\eauthor{San Zhang}
+
+\studentid{080000}
+
+\cdepartment{软件学院}
+\edepartment{School of Software Engineering}
+
+\cdiscipline{工学}
+\ediscipline{Computer Science}
+
+\cmajor{软件工程}
+\emajor{Software Enginnering}
+
+\csupervisor{李四}
+\esupervisor{Si Li}
+
+\cdate{二〇一四年十一月}
+\edate{Nov, 2014}
+
+
+\begin{document}
+
+	\makethesiscover % make thesis cover
+
+
+
+\begin{cabstract}
+应概括地反映出本论文的主要内容,包括工作目的、研究方法、研究成果和结论,要突出本论
+ 文的创造性成果。摘要力求语言精炼准确,硕士学位论文建议 1000
+  字以内,博士学位论文建议 3000 字以内。摘要中不要出现图片、图表、表格或其他插图材料。
+
+
+学位论文原则上应用汉语撰写,对于用汉语授课并享受中国政府奖学金的博士硕士留学研究生,
+ 学位论文如用英语(德语、法语)撰写,硕士学位论文不少于 3000
+  汉字摘要,博士学位论文不少于 5000
+   汉字摘要;对于其他情况(含用英语授课)的博士硕士留学研究生,学位论文如用英语(德语、
+    法语)撰写,可不要求撰写汉语摘要,但必须有英语摘要。
+
+
+关键词是为了便于文献索引和检索工作,从论文中选取出来用以表示全文主题内容信息的单词 或术语,摘要内容后另起一行标明,一般 3~5 个,之间用“,”分开。
+
+	\makeckeyword{关键字， 摘要}
+	
+\end{cabstract}
+
+\begin{eabstract}
+	First Paragraph
+	
+	SecondParagraph
+	
+	Tongji University, located in Shanghai, has more than 50,000 students and 8,000 staff members (as of 1 September 2007). It offers degree programs at both undergraduate and postgraduate levels. Established in 1907 by the German government together with German physicians in Shanghai, Tongji is one of the oldest and most prestigious universities in China. Among its various departments it is especially highly ranked in engineering, among which its architecture, urban planning, and civil engineering departments have consistently ranked first in China for decades, and its automotive engineering, oceanography, environmental science, software engineering, German language departments are also ones of the best domestically.
+	
+	\makeekeyword{English Keyword 1, 2, 3}
+\end{eabstract}
+
+
+
+\frontmatter
+\tableofcontents
+
+
+\clearpage %cannot be omitted !
+\mainmatter
+
+
+
+
+\section{基本功能测试}
+\subsection{字体和字号}
+
+	中文默认字体宋体。 \textit{斜体} \textbf{粗体} \\
+	Default English font: Time New Roman\\
+	
+	 改成别的字体：
+	 \begin{itemize}
+	 \item {\song \textbackslash song 宋体}
+	 \item {\fangsong \textbackslash fangsong 仿宋}
+	 \item {\li \textbackslash li 隶书}
+	 \item {\hei \textbackslash hei 黑体}
+	 \item {\arial \textbackslash arial Arial}
+	 \item {\timesnew \textbackslash timesnew Times New Roman}
+	 \end{itemize}
+	 
+	 \vspace*{1em}改变字号：
+	 \begin{itemize}
+		 \item {\chuhao \textbackslash chuhao 初号 42pt}
+		 \item {\xiaochuhao \textbackslash xiaochuhao 小初号 36pt}
+		 \item {\yihao \textbackslash yihao 一号 28pt}
+		 \item {\erhao  \textbackslash erhao 二号 21pt}
+		 \item {\xiaoerhao \textbackslash xiaoerhao 小二号 18pt}
+		 \item {\sanhao \textbackslash sanhao 三号 15.75pt}
+		 \item {\sihao \textbackslash sihao 四号 14pt}
+		 \item {\xiaosihao \textbackslash xiaosihao 小四号 12pt}
+		 \item {\wuhao \textbackslash wuhao 五号 10.5pt}
+		 \item {\xiaowuhao \textbackslash xiaowuhao 小五号 9pt}
+		 \item {\liuhao \textbackslash liuhao 六号 7.875pt}
+		 
+	 \end{itemize}
+
+
+\subsection{图表}
+
+\section{章节标题}
+
+\subsection{一级标题}
+\subsubsection{二级标题}
+\paragraph{三级标题}
+看看三级标题有没有断行\\
+
+
+
+\section*{致谢}
+
+
+
+
+\addcontentsline{toc}{section}{参考文献} %在目录中添加“参考文献”的标记
+\bibliographystyle{plain}
+\bibliography{../dpd_thesis_en}
+
+
+\appendix
+\section*{附录}
+附录内容
+
+
+\section*{个人简历}
+
+\end{document}

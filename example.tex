@@ -81,7 +81,26 @@ lalala
 %\appendix
 \tocless \section{附录}
 \addcontentsline{toc}{section}{附录}
-附录内容
+\fancypagestyle{appendix}{%
+		\fancyhead{}
+		\fancyhead[LE, RO]{\song \wuhao 同济大学 \hspace*{0.5em} 硕士学位论文 \hspace*{0.5em} 附录  }
+}
+
+
+\patchcmd{\listoffigures}{\section*}{\subsection*}{}{}
+\renewcommand{\listfigurename}{图目录}
+
+\patchcmd{\listoftables}{\section*}{\subsection*}{}{}
+\renewcommand{\listtablename}{表目录}
+\thispagestyle{appendix}
+
+
+\listoffigures
+\addcontentsline{toc}{subsection}{图目录}
+
+\listoftables
+\addcontentsline{toc}{subsection}{表目录}
+
 
 \clearpage
 

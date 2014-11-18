@@ -12,6 +12,11 @@
 %--------------------------- 页眉 页脚 页码 ---------------------------
 \RequirePackage{fancyhdr}
 
+\fancypagestyle{appendix}{%
+		\fancyhead{}
+		\fancyhead[LE, RO]{\song \wuhao 同济大学 \hspace*{0.5em} 硕士学位论文 \hspace*{0.5em} 附录  }
+}
+
 
 %宋体五号,单页:右上角;双页:左上角,Abstract 部分用 Times New Roman 体,五号
 

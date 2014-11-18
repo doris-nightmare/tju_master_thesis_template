@@ -7,6 +7,7 @@
 
 % ------------------- General Settings ------------------
 \setcounter{secnumdepth}{4} % 让paragraph当四级标题
+\RequirePackage{etoolbox}
 
 %--------------------------- 页眉 页脚 页码 ---------------------------
 \RequirePackage{fancyhdr}
@@ -165,7 +166,6 @@
 
 
 %---------------------------- 各章节标题 ---------------------------
-
 % 各章节标题
 \RequirePackage{titlesec}
 
@@ -181,16 +181,22 @@
 \titleformat{\paragraph}{ \hei \xiaosihao}{\theparagraph}{1em}{}
 % 三级标题 黑体,小四顶左,单倍行距,段前空 12 磅,段后空 6 磅,序号 与题名间空一个字符
 
-%\renewcommand\sectionbreak{\clearpage} % 在每个section结束之后开始新的页
+% 学到了一种override command的方法！
+\let\stdsection\section
+\renewcommand\section{
+	\clearpage 
+	% add more functionality here
+	\setcounter{table}{0}
+	\setcounter{figure}{0}
+	\setcounter{equation}{0}
 
-% \RequirePackage{etoolbox}
-
-%\AfterEndEnvironment{section}{\clearpage}
+	\stdsection % put this command last
+}
 
 
 % ------------------------------------ 参考文献 ----------------------------
-\RequirePackage{etoolbox}
-\patchcmd{\thebibliography}{\addcontentsline{toc}{section}{\refname}}{}{}{}
+
+%\patchcmd{\thebibliography}{\addcontentsline{toc}{section}{\refname}}{}{}{}
 %\patchcmd{\thebibliography}{\section{参考文献}}{}{}{}
 \renewcommand {\refname}{参考文献}
 
@@ -203,10 +209,15 @@
 \renewcommand\figurename{图}
 
 %带章节号的图表
- \makeatletter
-	\renewcommand{\thefigure}{\ifnum \c@section>\z@ \thesection.\fi \@arabic\c@figure}
-	\renewcommand{\thetable}{\ifnum \c@section>\z@ \thesection.\fi \@arabic\c@table}
-\makeatother
+%comment掉qihang版
+%  \makeatletter
+% 	\renewcommand{\thefigure}{\ifnum \c@section>\z@ \thesection.\fi \@arabic\c@figure}
+% 	\renewcommand{\thetable}{\ifnum \c@section>\z@ \thesection.\fi \@arabic\c@table}
+% \makeatother
+
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
 
 
 % --------------------------------- 日期格式 ---------------------
@@ -258,11 +269,6 @@
 
 \thesis@define{cdate}
 \thesis@define{edate}
-
-
-% \newcommand{\thesis}[2]{
-% 	\expandafter \newcommand \expandafter{\csname thesis@#1 \endcsname} {#2}
-% }
 
 % ------------------------ Cover ------------------------
 \RequirePackage{graphicx}
@@ -472,6 +478,24 @@
 	\newcommand{\makeekeyword}[1]{\vspace*{0.6cm} \noindent \textbf{Kew Words: }#1}
 
 	
+% ------------------ 其他中文支持， 不知道是否用得上----------------------%
+%% Code
+\RequirePackage{listings}
+% \lstloadlanguages{[Visual]C++,[ISO]C++}
+\renewcommand\lstlistingname{代码}
+\renewcommand\lstlistlistingname{代码}
+
+%% Algorithms
+\RequirePackage[algoruled,lined]{algorithm2e}
+\renewcommand{\listalgorithmcfname}{算法清单}
+\renewcommand{\algorithmcfname}{算法}
+\renewcommand{\algorithmautorefname}{算法}
+\SetAlCapHSkip{2em}
+\SetAlgoCaptionSeparator{\hspace*{1em}}
+\SetAlgoSkip{bigskip}
+\setlength{\algomargin}{2em}
+\SetKw{KwContinue}{continue\\}
+\SetKw{KwBreak}{break\\}
 
 
 

@@ -47,33 +47,129 @@
 之前的部分(中文摘要、 Abstract、目录等)用大写罗马数字(I,II,III......)单独编排。
 
 
-test another assumption\\
-为什么这个被算到了后面的章节。。。。
 
-\clearpage
+\subsection{图表和表达式}
+	表达式主要指数字表达式,也包括文字表达式。表达式需另行起排,并用阿拉伯
+	数字分章编号。 序号加圆括号,右顶格排。例如:第 3 章第 2 个表达式（3.2）
+	
+\subsubsection{图}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.5\linewidth]{tongji-logo.png}
+		\caption{同济Logo}
+		\label{fig:tongji}
+	\end{figure}
+
+\subsubsection{表}
+		\begin{table}[h!]
+		\centering
+			\caption{A Table}
+			\begin{tabular}{c|c}
+			a & b \\ \hline
+			c & d \\ \hline
+			\end{tabular}
+		\end{table}
+		
+		\begin{table}[h!]
+			\centering
+				\caption{Tableeeeeeeeee}
+				\label{tb:test_tb}
+				\begin{tabular}{c|c}
+				a & b \\ \hline
+				c & d \\ \hline
+				\end{tabular}
+			\end{table}
+			
+\subsubsection{公式}
+	\begin{equation}\label{eq:test}
+	\sum_{i=1}^n a_i \times b_i 
+	\end{equation}
+	
+	\begin{equation}
+		\sum_{i=1}^n a_i \times b_i 
+		\end{equation}
+		
+	多行公式：
+	\begin{eqnarray}
+			\sum_{i=1}^n a_i \times b_i  \nonumber \\
+				\sum_{i=1}^n a_i \times b_i 
+	\end{eqnarray}
+\subsection{交叉引用}
+	如公式~\ref{eq:test}所述，这是一个公式。表~\ref{tb:test_tb}是
+	一个不长的表格
+	
+	如图~\ref{fig:tongji}所示，这是一个同济大学的标识。
+	
+\subsection{其他码农功能}
+\subsubsection{算法}
+算法流程用的\textit{algorithm2e}包
+\begin{algorithm}
+	\KwData{this text}
+	 \KwResult{如何写算法 \LaTeX2e }
+	 initialization\;
+	 \While{not at end of this document}{
+	  read current\;
+	  \eIf{understand}{
+	   go to next section\;
+	   current section becomes this one\;
+	   hello world\;
+	   	 \KwContinue
+	   	 \KwBreak 
+	   }{
+	   go back to the beginning of current section\;
+	  }
+	 }
+	 \caption{如何写算法}
+\end{algorithm}
+
+\subsubsection{代码}
+use package \textit{listings}. Customized format can be set
+%\lstset{breaklines=true,tabsize=4,extendedchars=false,escapechar=\%}
+\lstset{basicstyle=\ttfamily\small ,frame=single,captionpos=t}
+%\lstinputlisting[language=Python]{src.py}
+\begin{lstlisting}[language=Python, caption=一段python代码] 
+import os
+import sys
+import re
+import string
+
+name = sys.argv[1]
+data = open(name)
+data2 = file('2'+name,'wr')
+d1 = list()
+d2 = list()
+d3 = list()
+
+for each_line in data:
+	each_line=each_line.replace('\n','')
+	elems = each_line.split('\t')
+	d1.append(elems[0])
+	d2.append(elems[1])
+	d3.append(elems[2])
+\end{lstlisting}
+
+
+
 \section{章节标题}
-	\textbackslash section
+	章节标题 \textbackslash section \\
+	show一下段落层次
 \subsection{一级标题} 
-	\textbackslash subsection
+	一级标题 \textbackslash subsection
 	
 \subsubsection{二级标题}
-	\textbackslash subsubsection
+	二级标题 \textbackslash subsubsection
 	
 \paragraph{三级标题}
-	\textbackslash paragraph
-	
+	三级标题 \textbackslash paragraph
 看看三级标题有没有断行 ----- 结论 断行啦\\
 
 
-\clearpage
+
+
 \section{基本功能测试}
 \subsection{待解决问题}
 	``这个貌似不对了''
 		
-
-
-\subsection{图表}
-	to be finished
 
 	
 \subsection{引用}
@@ -85,11 +181,59 @@ test another assumption\\
 
 \subsection{附录}
 
-	图和表的目录。。。。。。
+	图和表的目录。。。。。。\\
+	某一个表达式：
+	\begin{equation}
+	 \sum_{i=1}^{n}x_i = 10
+	\end{equation}
 	
-	
-\clearpage
-\section{Try English Section Name}
-		Contents
 
-\clearpage
+
+
+
+\section{图表公式再测一次}
+
+\subsection{要个subsection吧}
+
+\subsubsection{图}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.5\linewidth]{tongji-logo.png}
+		\caption{同济Logo}
+		\label{fig:tongji2}
+	\end{figure}
+
+\subsubsection{表}
+		\begin{table}[h!]
+		\centering
+			\caption{A Table}
+			\begin{tabular}{c|c}
+			a & b \\ \hline
+			c & d \\ \hline
+			\end{tabular}
+		\end{table}
+		
+		\begin{table}[h!]
+			\centering
+				\caption{Tableeeeeeeeee}
+				\label{tb:test_tb2}
+				\begin{tabular}{c|c}
+				a & b \\ \hline
+				c & d \\ \hline
+				\end{tabular}
+			\end{table}
+			
+\subsubsection{公式}
+	\begin{equation}\label{eq:test2}
+	\sum_{i=1}^n a_i \times b_i 
+	\end{equation}
+	
+	\begin{equation}
+		\sum_{i=1}^n a_i \times b_i 
+		\end{equation}
+		
+	多行公式：
+	\begin{eqnarray}
+			\sum_{i=1}^n a_i \times b_i  \nonumber \\
+				\sum_{i=1}^n a_i \times b_i 
+	\end{eqnarray}

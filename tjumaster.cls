@@ -65,7 +65,10 @@
 		%正文的单数页页眉为章标题:“第 X 章 XXXXXX”,双数页 页眉为论文标题;“同济大学 硕/博士学位论文 中文题目”
 		\fancyhead{}
 		\fancyhead[RO]{\song \wuhao 第 \thesection 章   \leftmark }
-		\fancyhead[LE]{\song \wuhao 同济大学 \hspace*{0.5em} 硕士学位论文 \hspace*{0.5em} \thesis@ctitle }
+		\fancyhead[LE]{\song \wuhao 	
+			\begin{tabular}{p{9cm}}
+			同济大学 \hspace*{0.2em} 硕士学位论文 \hspace*{0.2em}  \thesis@ctitle 
+				\end{tabular}}
 	\makeatother} 
 
 %估计还需要个backmatter
@@ -225,6 +228,15 @@
 \renewcommand{\theequation}{\thesection.\arabic{equation}}
 
 
+%图表目录
+\patchcmd{\listoffigures}{\section*}{\subsection*}{}{}
+\renewcommand{\listfigurename}{图目录}
+
+\patchcmd{\listoftables}{\section*}{\subsection*}{}{}
+\renewcommand{\listtablename}{表目录}
+\thispagestyle{appendix}
+
+
 % --------------------------------- 日期格式 ---------------------
 \RequirePackage{CJKnumb}
 %\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}  
@@ -365,10 +377,11 @@
 		\end{center}
 		\clearpage
 
-		% -------------------- don't know how to describe ...装订线？----
+		% -------------------- don't know how to describe ...装订线？书脊？----
 		\makeatletter
 		\begin{table}
 		\centering
+		\vspace*{-1cm}
 			\fangsong \bfseries \fontsize{14pt}{20pt}  \selectfont  
 			\begin{tabular}{|m{1em}<{\centering}|}
 				\hline
@@ -378,7 +391,7 @@
 				\thesis@cauthor
 				\vspace*{0.5cm}
 				同济大学
-				\vspace*{1cm} \\ \hline
+				\vspace*{1em} \\ \hline
 			\end{tabular}
 		\end{table}
 		\makeatother

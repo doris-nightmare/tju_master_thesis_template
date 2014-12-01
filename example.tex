@@ -4,7 +4,9 @@
 \usepackage{subcaption} %for subfigure
 
 % fill in the variables
-\ctitle{用 L a T e X 写论文的初步尝试}
+%\ctitle{用 L a T e X 写论文的初步尝试一二三四五六七八九十十一十二十三十四十五十六}
+%\ctitle{并行环境下向量式有限元复杂结构三维动态拾取技术与测试研究}
+\ctitle{基于意图的设计模式变体检测}
 \etitle{Master Thesis AAAAAAAAAAA BBBBBBBBB CCCCCCCC}
 
 % 副标题功能尚未支持= =
@@ -80,20 +82,8 @@ lalala
 
 %\appendix
 \tocless \section{附录}
+
 \addcontentsline{toc}{section}{附录}
-\fancypagestyle{appendix}{%
-		\fancyhead{}
-		\fancyhead[LE, RO]{\song \wuhao 同济大学 \hspace*{0.5em} 硕士学位论文 \hspace*{0.5em} 附录  }
-}
-
-
-\patchcmd{\listoffigures}{\section*}{\subsection*}{}{}
-\renewcommand{\listfigurename}{图目录}
-
-\patchcmd{\listoftables}{\section*}{\subsection*}{}{}
-\renewcommand{\listtablename}{表目录}
-\thispagestyle{appendix}
-
 
 \listoffigures
 \addcontentsline{toc}{subsection}{图目录}
@@ -101,6 +91,7 @@ lalala
 \listoftables
 \addcontentsline{toc}{subsection}{表目录}
 
+\thispagestyle{appendix}
 
 \clearpage
 

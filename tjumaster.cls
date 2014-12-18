@@ -496,9 +496,6 @@
 	\newcommand{\makeekeyword}[1]{\vspace*{0.6cm} \noindent \textbf{Kew Words: }#1}
 
 %----------------- 符号说明 ---------------------%
-\newenvironment{symbol}{
-	
-}
 
 	
 % ------------------ 其他中文支持， 不知道是否用得上----------------------%

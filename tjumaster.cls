@@ -345,7 +345,7 @@
 			Tongji University in comformity with the requirements for \\
 			the degree of Master of Computer Science\\}
 	
-			\vspace*{3cm}
+			\vspace*{1cm}
 			\begin{table}[h]
 				\centering
 				\arial \fontsize{18pt}{24pt}\selectfont \bfseries
@@ -353,7 +353,7 @@
 					 \thesis@etitle \\
 				\end{tabular}
 			\end{table}
-			\vspace*{4cm}
+			\vspace*{1cm}
 		\end{center}
 
 		\begin{center}

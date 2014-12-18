@@ -145,7 +145,7 @@
 \newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}	% 六号
 \newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}	% 七号
 
-  \renewcommand{\normalsize}{\fontsize{12pt}{14pt}\selectfont}
+  \renewcommand{\normalsize}{\fontsize{12pt}{20pt}\selectfont}
 
 
 % ------------------------ Table of Contents 目录 ------------------------
@@ -494,6 +494,11 @@
 	}
 
 	\newcommand{\makeekeyword}[1]{\vspace*{0.6cm} \noindent \textbf{Kew Words: }#1}
+
+%----------------- 符号说明 ---------------------%
+\newenvironment{symbol}{
+	
+}
 
 	
 % ------------------ 其他中文支持， 不知道是否用得上----------------------%

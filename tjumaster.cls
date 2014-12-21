@@ -260,6 +260,7 @@
 
 % variables on the cover
 
+\thesis@define{thesistype}
 
 \thesis@define{ctitle}
 \thesis@define{etitle}
@@ -284,6 +285,9 @@
 \thesis@define{csupervisor}
 \thesis@define{esupervisor}
 
+\thesis@define{cvicesupervisor}
+\thesis@define{evicesupervisor}
+
 \thesis@define{cdate}
 \thesis@define{edate}
 
@@ -299,7 +303,8 @@
 		\begin{center}
 			\includegraphics[width=10.2cm]{tongji-logo.png} \\
 			{\vspace{1em} \li \erhao \bfseries 硕士学位论文} \\
-			\vspace*{3cm}
+			{\li \sihao \bfseries（\thesis@thesistype）}
+			\vspace*{2cm}
 			\begin{table}[h]
 				\centering
 				\fontsize{21pt}{35pt} \selectfont \hei \bfseries
@@ -326,6 +331,8 @@
 
 		\vspace{1em}
 		\hspace*{4.5cm}{\sanhao \fangsong 指导教师: \hspace*{1em} \thesis@csupervisor} 
+
+		\ifdefempty{\thesis@cvicesupervisor}{}{\vspace{1em} \hspace*{3.8cm } \sanhao \fangsong 副指导教师: \hspace*{1em} \thesis@cvicesupervisor}
 
 
 		\vspace{1.5em}
@@ -365,6 +372,7 @@
 				Discipline: & \thesis@ediscipline \\\\
 				Major: & \thesis@emajor \\\\
 				Supervisor: & \thesis@esupervisor
+				\ifdefempty{\thesis@evicesupervisor}{}{\\\\ Vice Supervisor: & \thesis@evicesupervisor}
 
 			\end{tabular}
 		\end{center}

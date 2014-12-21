@@ -303,7 +303,7 @@
 		\begin{center}
 			\includegraphics[width=10.2cm]{tongji-logo.png} \\
 			{\vspace{1em} \li \erhao \bfseries 硕士学位论文} \\
-			{\li \sihao \bfseries（\thesis@thesistype）}
+			\ifdefempty{\thesis@thesistype}{}{\li \sihao \bfseries \thesis@thesistype}
 			\vspace*{2cm}
 			\begin{table}[h]
 				\centering

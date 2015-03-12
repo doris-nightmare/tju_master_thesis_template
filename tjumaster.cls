@@ -393,13 +393,13 @@
 			\fangsong \bfseries \fontsize{14pt}{20pt}  \selectfont  
 			\begin{tabular}{|m{1em}<{\centering}|}
 				\hline
-				\vspace*{1cm}
+				\vspace*{5cm}
 				\thesis@ctitle
 				\vspace*{0.5cm}
 				\thesis@cauthor
 				\vspace*{0.5cm}
 				同济大学
-				\vspace*{1em} \\ \hline
+				\vspace*{5cm} \\ \hline
 			\end{tabular}
 		\end{table}
 		\makeatother

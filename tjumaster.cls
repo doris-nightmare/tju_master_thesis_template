@@ -189,6 +189,8 @@
 \titleformat{\paragraph}{ \hei \xiaosihao}{\theparagraph}{1em}{}
 % 三级标题 黑体,小四顶左,单倍行距,段前空 12 磅,段后空 6 磅,序号 与题名间空一个字符
 
+
+
 % 学到了一种override command的方法！
 \let\stdsection\section
 \renewcommand\section{
@@ -197,6 +199,7 @@
 	\setcounter{table}{0}
 	\setcounter{figure}{0}
 	\setcounter{equation}{0}
+	\setcounter{lstlisting}{0}
 
 	\stdsection % put this command last
 }
@@ -226,6 +229,19 @@
 \renewcommand{\thefigure}{\thesection.\arabic{figure}}
 \renewcommand{\thetable}{\thesection.\arabic{table}}
 \renewcommand{\theequation}{\thesection.\arabic{equation}}
+	
+
+% ------------------ 其他中文支持， 不知道是否用得上----------------------%
+%% Code
+\RequirePackage{listings}
+% \lstloadlanguages{[Visual]C++,[ISO]C++}
+\renewcommand\lstlistingname{代码清单}
+%\renewcommand\lstlistlistingname{代码} the header name for the list of listings
+
+\AtBeginDocument{%
+  \renewcommand{\thelstlisting}{\thesection.\arabic{lstlisting}}
+  %the counter lstlisting is defined within begin document
+}
 
 
 %图表目录
@@ -506,12 +522,7 @@
 %----------------- 符号说明 ---------------------%
 
 	
-% ------------------ 其他中文支持， 不知道是否用得上----------------------%
-%% Code
-\RequirePackage{listings}
-% \lstloadlanguages{[Visual]C++,[ISO]C++}
-\renewcommand\lstlistingname{代码}
-\renewcommand\lstlistlistingname{代码}
+
 
 %% Algorithms
 \RequirePackage[algoruled,lined]{algorithm2e}

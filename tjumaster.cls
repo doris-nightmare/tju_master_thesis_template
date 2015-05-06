@@ -66,7 +66,7 @@
 		\fancyhead{}
 		\fancyhead[RO]{\song \wuhao 第 \thesection 章   \leftmark }
 		\fancyhead[LE]{\song \wuhao 	
-			\begin{tabular}{p{9cm}}
+			\begin{tabular}{p{12cm}}
 			同济大学 \hspace*{0.2em} 硕士学位论文 \hspace*{0.2em}  \thesis@ctitle 
 				\end{tabular}}
 	\makeatother} 
@@ -517,7 +517,7 @@
 		\fancyhead[LE,RO]{\song \wuhao 同济大学 \hspace*{0.5em} 硕士学位论文 \hspace*{1em} 目录 }
 	}
 
-	\newcommand{\makeekeyword}[1]{\vspace*{0.6cm} \noindent \textbf{Kew Words: }#1}
+	\newcommand{\makeekeyword}[1]{\vspace*{0.6cm} \noindent \textbf{Key Words: }#1}
 
 %----------------- 符号说明 ---------------------%
 

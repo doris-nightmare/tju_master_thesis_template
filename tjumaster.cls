@@ -2,6 +2,14 @@
 % --------------- Identification --------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{tjumaster}[2014/11/12 Doris Yang]
+
+%  --------------------  添加盲审相关隐去姓名的选项------------------
+\newif \ifanonymous \anonymousfalse
+\DeclareOption{anonymous}{\anonymoustrue}
+\ExecuteOptions{}
+\ProcessOptions\relax  %what for? relax?
+
+
  
 \LoadClass[a4paper,twoside]{article}   % 12pt是小四
 
@@ -16,6 +24,10 @@
 		\fancyhead{}
 		\fancyhead[LE, RO]{\song \wuhao 同济大学 \hspace*{0.5em} 硕士学位论文 \hspace*{0.5em} 附录  }
 }
+
+
+
+
 
 
 %宋体五号,单页:右上角;双页:左上角,Abstract 部分用 Times New Roman 体,五号
@@ -307,6 +319,8 @@
 \thesis@define{cdate}
 \thesis@define{edate}
 
+\thesis@define{anonymousnumber}
+
 % ------------------------ Cover ------------------------
 \RequirePackage{graphicx}
 \RequirePackage{setspace}
@@ -316,6 +330,9 @@
 	\begin{titlepage}
 		\pagestyle{empty}
 		%------------------ 中文封面 ------------------------
+		\ifanonymous \begin{flushright} 论文编号：\thesis@anonymousnumber
+		\end{flushright} \fi
+
 		\begin{center}
 			\includegraphics[width=10.2cm]{tongji-logo.png} \\
 			{\vspace{1em} \li \erhao \bfseries 硕士学位论文} \\
@@ -331,24 +348,44 @@
 			\vspace*{4cm}
 		\end{center}
 
-		 \hspace*{4.5cm}{\sanhao \fangsong 姓\hspace*{2em}名: \hspace*{1em} \thesis@cauthor}  
+		\ifanonymous
+
 
 		\vspace{1em}
-		\hspace*{4.5cm}{\sanhao \fangsong 学\hspace*{2em}号: \hspace*{1em} \thesis@studentid} 
+		\hspace*{3.5cm}{\sanhao \fangsong 所在院系: \hspace*{1em} \thesis@cdepartment} 
 
 		\vspace{1em}
-		\hspace*{4.5cm}{\sanhao \fangsong 所在院系: \hspace*{1em} \thesis@cdepartment} 
+		\hspace*{3.5cm}{\sanhao \fangsong 学科门类: \hspace*{1em} \thesis@cdiscipline}  
 
 		\vspace{1em}
-		\hspace*{4.5cm}{\sanhao \fangsong 学科门类: \hspace*{1em} \thesis@cdiscipline}  
+		\hspace*{3.5cm}{\sanhao \fangsong 学科专业: \hspace*{1em} \thesis@cmajor} 
+
+
+
+		\else
+
+
+		 \hspace*{3.5cm}{\sanhao \fangsong 姓\hspace*{2em}名: \hspace*{1em} \thesis@cauthor}  
 
 		\vspace{1em}
-		\hspace*{4.5cm}{\sanhao \fangsong 学科专业: \hspace*{1em} \thesis@cmajor} 
+		\hspace*{3.5cm}{\sanhao \fangsong 学\hspace*{2em}号: \hspace*{1em} \thesis@studentid} 
 
 		\vspace{1em}
-		\hspace*{4.5cm}{\sanhao \fangsong 指导教师: \hspace*{1em} \thesis@csupervisor} 
+		\hspace*{3.5cm}{\sanhao \fangsong 所在院系: \hspace*{1em} \thesis@cdepartment} 
+
+		\vspace{1em}
+		\hspace*{3.5cm}{\sanhao \fangsong 学科门类: \hspace*{1em} \thesis@cdiscipline}  
+
+		\vspace{1em}
+		\hspace*{3.5cm}{\sanhao \fangsong 学科专业: \hspace*{1em} \thesis@cmajor} 
+
+		\vspace{1em}
+		\hspace*{3.5cm}{\sanhao \fangsong 指导教师: \hspace*{1em} \thesis@csupervisor} 
 
 		\ifdefempty{\thesis@cvicesupervisor}{}{\vspace{1em} \hspace*{3.8cm } \sanhao \fangsong 副指导教师: \hspace*{1em} \thesis@cvicesupervisor}
+
+		\fi
+
 
 
 		\vspace{1.5em}
@@ -379,21 +416,35 @@
 			\vspace*{1cm}
 		\end{center}
 
-		\begin{center}
+		\ifanonymous
+
+			\begin{center}
 			\sanhao
 			\begin{tabular}{l  p{5cm}}
-				Candidate: & \thesis@eauthor \\ \\
-				Student Number: & \thesis@studentid \\\\
 				School / Department: & \thesis@edepartment \\\\
 				Discipline: & \thesis@ediscipline \\\\
 				Major: & \thesis@emajor \\\\
-				Supervisor: & \thesis@esupervisor
-				\ifdefempty{\thesis@evicesupervisor}{}{\\\\ Vice Supervisor: & \thesis@evicesupervisor}
 
-			\end{tabular}
-		\end{center}
-		
-		 
+				\end{tabular}
+			\end{center}
+
+		\else
+
+			\begin{center}
+			\sanhao
+				\begin{tabular}{l  p{5cm}}
+					Candidate: & \thesis@eauthor \\ \\
+					Student Number: & \thesis@studentid \\\\
+					School / Department: & \thesis@edepartment \\\\
+					Discipline: & \thesis@ediscipline \\\\
+					Major: & \thesis@emajor \\\\
+					Supervisor: & \thesis@esupervisor
+					\ifdefempty{\thesis@evicesupervisor}{}{\\\\ Vice Supervisor: & \thesis@evicesupervisor}
+
+				\end{tabular}
+			\end{center}
+
+		\fi	 
 
 		\vspace{1.5em}
 		\begin{center}
@@ -410,11 +461,16 @@
 			\begin{tabular}{|m{1em}<{\centering}|}
 				\hline
 				\vspace*{5cm}
-				\thesis@ctitle
+				\thesis@ctitle				
+				\ifanonymous
+				
+				\else
 				\vspace*{0.5cm}
 				\thesis@cauthor
+				\fi
+
 				\vspace*{0.5cm}
-				同济大学
+				 同济大学
 				\vspace*{5cm} \\ \hline
 			\end{tabular}
 		\end{table}
@@ -537,10 +593,15 @@
 \SetKw{KwBreak}{break\\}
 
 
+\newenvironment{wuhaoarea}{\wuhao}
+	{ \normalsize}
+
 
 % ------------------- Testing Area -------------------
 \newenvironment{hugespace}{\erhao \li \begin{center}  测试环境\\}
 	{\end{center} \normalsize}
+
+
 
 
 

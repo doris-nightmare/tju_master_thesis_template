@@ -158,6 +158,7 @@
 \newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}	% 七号
 
   \renewcommand{\normalsize}{\fontsize{12pt}{20pt}\selectfont}
+  \newcommand{\codesize}{\fontsize{10.5pt}{15pt}\selectfont}
 
 
 % ------------------------ Table of Contents 目录 ------------------------

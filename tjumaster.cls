@@ -350,7 +350,10 @@
 		\end{center}
 
 		\ifanonymous
+		 \hspace*{3.5cm}{\sanhao \fangsong 姓\hspace*{2em}名: }  
 
+		\vspace{1em}
+		\hspace*{3.5cm}{\sanhao \fangsong 学\hspace*{2em}号: } 
 
 		\vspace{1em}
 		\hspace*{3.5cm}{\sanhao \fangsong 所在院系: \hspace*{1em} \thesis@cdepartment} 
@@ -361,6 +364,8 @@
 		\vspace{1em}
 		\hspace*{3.5cm}{\sanhao \fangsong 学科专业: \hspace*{1em} \thesis@cmajor} 
 
+		\vspace{1em}
+		\hspace*{3.5cm}{\sanhao \fangsong 指导教师: \hspace*{1em} } 
 
 
 		\else
@@ -422,10 +427,12 @@
 			\begin{center}
 			\sanhao
 			\begin{tabular}{l  p{5cm}}
-				School / Department: & \thesis@edepartment \\\\
-				Discipline: & \thesis@ediscipline \\\\
-				Major: & \thesis@emajor \\\\
-
+				Candidate: &  \\ \\
+					Student Number: & \\\\
+					School / Department: & \thesis@edepartment \\\\
+					Discipline: & \thesis@ediscipline \\\\
+					Major: & \thesis@emajor \\\\
+					Supervisor: & 
 				\end{tabular}
 			\end{center}
 
